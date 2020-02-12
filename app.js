@@ -7,14 +7,14 @@ const cors = require('cors');
 const compression = require('compression');
 
 const indexRouter = require('./src/routes/index');
-const apiRouter = require('./src/routes/api').default;
+const apiRouter = require('./src/routes/api');
 
 const app = express();
 
+app.use(compression());
+
 app.use(cors());
 app.use(helmet());
-
-app.use(compression());
 
 app.use(logger('dev'));
 app.use(express.json());
