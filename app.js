@@ -5,11 +5,18 @@ const logger = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
 const compression = require('compression');
+const mongoose = require('mongoose');
 
 const indexRouter = require('./src/routes/index');
 const apiRouter = require('./src/routes/api');
 
 const app = express();
+
+// iniciando a conexão com o MongoDB
+mongoose.connect(process.env.MONGOURL || 'mongodb://localhost:27017/starwars', {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+});
 
 app.use(compression());
 

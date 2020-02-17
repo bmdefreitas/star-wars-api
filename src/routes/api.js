@@ -1,10 +1,12 @@
 const express = require('express');
 
 const router = express.Router();
+const planetasRoutes = require('./planetas');
 
-/* GET users listing. */
 router.get('/', (req, res) => {
-  res.status(200).send('respond with a resource');
+  res.send({ title: 'Star Wars Api' });
 });
+
+router.use('/v1/planetas', planetasRoutes);
 
 module.exports = router;
