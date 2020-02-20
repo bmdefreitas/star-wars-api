@@ -1,4 +1,5 @@
 const express = require('express');
+
 const PlanetaController = require('../controllers/planeta');
 
 const router = express.Router();

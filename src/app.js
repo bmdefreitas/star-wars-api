@@ -7,13 +7,15 @@ const cors = require('cors');
 const compression = require('compression');
 const mongoose = require('mongoose');
 
-const indexRouter = require('./src/routes/index');
-const apiRouter = require('./src/routes/api');
+const indexRouter = require('./routes/index');
+const apiRouter = require('./routes/api');
 
 const app = express();
 
+mongoose.set('useFindAndModify', false);
+
 // iniciando a conexão com o MongoDB
-mongoose.connect(process.env.MONGOURL || 'mongodb://localhost:27017/starwars', {
+mongoose.connect(process.env.NODE_ENV === 'test' ? process.env.MONGOURLTEST || 'mongodb://localhost:27017/test' : process.env.MONGOURL || 'mongodb://localhost:27017/starwars', {
   useUnifiedTopology: true,
   useNewUrlParser: true,
 });
