@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "babel src --out-dir dist",
+    "build": "./node_modules/.bin/babel src --out-dir dist",
     "start": "npm run build && nodemon dist/server.js",
     "start:dev": "DEBUG=star-wars-api:* nodemon babel-node ./src/server.js",
     "test:integration": "NODE_ENV=test mocha --opts tests/integration/mocha.opts tests/integration/**/*.spec.js --exit",
