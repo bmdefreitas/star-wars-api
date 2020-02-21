@@ -6,6 +6,8 @@ const router = express.Router();
 
 router.get('/', PlanetaController.index);
 
+router.get('/search', PlanetaController.findByName);
+
 router.get('/:id', PlanetaController.show);
 
 router.post('/', PlanetaController.create);
