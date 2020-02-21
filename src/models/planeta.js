@@ -13,6 +13,10 @@ const Planeta = new mongoose.Schema({
     type: String,
     required: true,
   },
+  qtdeAparicoesFilmes: {
+    type: Number,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model('Planeta', Planeta);
