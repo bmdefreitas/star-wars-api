@@ -11,6 +11,7 @@ describe('Routes: Planetas', () => {
     nome: 'Default planeta',
     terreno: 'jungle',
     clima: 'tropical',
+    qtdeAparicoesFilmes: 0,
   };
   const expectedPlaneta = {
     __v: 0,
@@ -18,6 +19,7 @@ describe('Routes: Planetas', () => {
     nome: 'Default planeta',
     terreno: 'jungle',
     clima: 'tropical',
+    qtdeAparicoesFilmes: 0,
   };
 
   beforeEach(async () => {
@@ -56,6 +58,18 @@ describe('Routes: Planetas', () => {
     });
   });
 
+  describe('GET /planetas/search', () => {
+    it('deve retornar uma lista de planetas encontrados pelo nome', (done) => {
+      request
+        .get(`/api/v1/planetas/search?nome=${defaultPlaneta.nome}`)
+        .end((err, res) => {
+          expect(res.statusCode).to.eql(200);
+          expect(res.body).to.eql([expectedPlaneta]);
+          done(err);
+        });
+    });
+  });
+
   describe('POST /planetas', () => {
     context('quando cria um planeta', () => {
       it('deve responder com um novo planeta e o status 201', (done) => {
@@ -72,6 +86,7 @@ describe('Routes: Planetas', () => {
           nome: 'Default planeta',
           terreno: 'jungle',
           clima: 'tropical',
+          qtdeAparicoesFilmes: 0,
         };
 
         request

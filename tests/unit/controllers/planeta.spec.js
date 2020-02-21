@@ -54,6 +54,40 @@ describe('Controller: Planetas', () => {
     });
   });
 
+  describe('findByName() planetas', () => {
+    it('deve retornar uma lista de planetas encontrados pelo nome', async () => {
+      const request = { query: { nome: defaultPlaneta[0].nome } };
+      const response = {
+        json: sinon.spy(),
+      };
+
+      Planeta.find = sinon.stub();
+      Planeta.find.withArgs().resolves(defaultPlaneta);
+
+      await PlanetaController.findByName(request, response);
+
+      sinon.assert.calledWith(response.json);
+    });
+
+    it('deve retornar status 400 quando um erro ocorrer', async () => {
+      const requestWithQuery = { query: { nome: defaultPlaneta[0].nome } };
+      const response = {
+        json: sinon.spy(),
+        status: sinon.stub(),
+      };
+
+      Planeta.find = sinon.stub();
+
+      Planeta.find.withArgs({ nome: defaultPlaneta[0].nome }).rejects({ message: 'Error' });
+
+      response.status.withArgs(400).returns(response);
+
+      await PlanetaController.findByName(requestWithQuery, response);
+
+      sinon.assert.calledWith(response.status, 400);
+    });
+  });
+
   describe('show() planeta', () => {
     it('deve retornar um planeta', async () => {
       const fakeId = 'fake-id';
