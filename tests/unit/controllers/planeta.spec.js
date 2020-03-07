@@ -1,11 +1,10 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-undef */
 /* eslint-disable max-classes-per-file */
-const sinon = require('sinon');
+import sinon from 'sinon';
 
-const PlanetaController = require('../../../src/controllers/planeta');
-
-const Planeta = require('../../../src/models/planeta');
+import PlanetaController from '../../../src/controllers/planeta';
+import Planeta from '../../../src/models/planeta';
 
 describe('Controller: Planetas', () => {
   const defaultPlaneta = [

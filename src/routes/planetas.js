@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express';
 
-const PlanetaController = require('../controllers/planeta');
+import PlanetaController from '../controllers/planeta';
 
 const router = express.Router();
 
@@ -16,4 +16,4 @@ router.put('/:id', PlanetaController.update);
 
 router.delete('/:id', PlanetaController.remove);
 
-module.exports = router;
+export default router;

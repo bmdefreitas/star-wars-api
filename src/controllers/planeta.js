@@ -2,12 +2,11 @@
  * Planeta Controller
  * @module PlanetaController
  */
+import Planeta from '../models/planeta';
+import swapiService from '../services/swapi';
 
-const Planeta = require('../models/planeta');
 
-const swapiService = require('../services/swapi');
-
-module.exports = {
+export default {
   /**
    * Lista todos os planetas
    * @param {Object} req - Requisicao.

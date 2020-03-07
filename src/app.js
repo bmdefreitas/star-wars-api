@@ -1,14 +1,14 @@
-const createError = require('http-errors');
-const express = require('express');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const helmet = require('helmet');
-const cors = require('cors');
-const compression = require('compression');
-const mongoose = require('mongoose');
+import compression from 'compression';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import express from 'express';
+import helmet from 'helmet';
+import createError from 'http-errors';
+import mongoose from 'mongoose';
+import logger from 'morgan';
 
-const indexRouter = require('./routes/index');
-const apiRouter = require('./routes/api');
+import indexRouter from './routes';
+import apiRouter from './routes/api';
 
 const app = express();
 
@@ -49,4 +49,4 @@ app.use((err, req, res) => {
   res.render('error');
 });
 
-module.exports = app;
+export default app;

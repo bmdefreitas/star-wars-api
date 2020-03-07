@@ -1,12 +1,14 @@
 #!/usr/bin/env node
+// ('star-wars-api:server');
+import debug from 'debug';
+import http from 'http';
+
+import app from './app';
+
 
 /**
  * Module dependencies.
  */
-
-const debug = require('debug')('star-wars-api:server');
-const http = require('http');
-const app = require('./app');
 
 /**
  * Create HTTP server.
@@ -18,7 +20,7 @@ const server = http.createServer(app);
  * Normalize a port into a number, string, or false.
  */
 
-const normalizePort = val => {
+const normalizePort = (val) => {
   const port = parseInt(val, 10);
 
   if (isNaN(port)) {

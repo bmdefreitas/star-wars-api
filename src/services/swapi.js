@@ -2,8 +2,8 @@
  * Swapi Service
  * @module Swapi
  */
+import fetch from 'node-fetch';
 
-const fetch = require('node-fetch');
 
 const urlApi = process.env.SWAPIURL || 'https://swapi.co/api/';
 
@@ -31,7 +31,7 @@ const getQtdeAparicoesFilmes = async (name) => {
   return planeta ? planeta.films.length : 0;
 };
 
-module.exports = {
+export default {
   findByName,
   getQtdeAparicoesFilmes,
 };

@@ -1,6 +1,6 @@
-const express = require('express');
+import express from 'express';
 
-const planetasRoutes = require('./planetas');
+import planetasRoutes from './planetas';
 
 const router = express.Router();
 
@@ -10,4 +10,4 @@ router.get('/', (req, res) => {
 
 router.use('/v1/planetas', planetasRoutes);
 
-module.exports = router;
+export default router;
